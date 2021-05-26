@@ -18,3 +18,8 @@ select * from users limit 2,1
 ```sql
 select * from users order by user_name desc 
 ```
+
+### 3. group by _ (having)
+***group by***语句根据其后跟的列名对该列数据相同的记录行进行分组\
+然后就可以对不同的组进行select（只能select作为分组依据的字段）\
+可以通过***having***对组进行过滤，就像***where***对行记录进行过滤一样

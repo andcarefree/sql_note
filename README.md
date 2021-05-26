@@ -23,3 +23,15 @@ select * from users order by user_name desc
 ***group by***语句根据其后跟的列名对该列数据相同的记录行进行分组\
 然后就可以对不同的组进行select（只能select作为分组依据的字段）\
 可以通过***having***对组进行过滤，就像***where***对行记录进行过滤一样
+```sql
+select user_age from users group by user_age
+```
+
+### 4. distinct
+***distinct***语句对其后所跟的列名进行去重\
+运用***group by***语句也可以达到去重的效果
+```sql
+select distinct user_age from users
+select user_age from users group by user_age
+```
+上述两个语句检索的行记录应该是一样的（顺序可能不一样，没有测试过）

@@ -35,3 +35,22 @@ select distinct user_age from users
 select user_age from users group by user_age
 ```
 上述两个语句检索的行记录应该是一样的（顺序可能不一样，没有测试过）
+
+### 5. left join
+***left join***语句是联结表的一种方式
+```sql
+select employees.emp_no 
+from employees left join dept_manager 
+on employees.emp_no = dept_manager.emp_no 
+where dept_no is null
+```
+上述语句中，两张表通过共有字段emp_no进行联结进而组合行形成一张临时表\
+***left join***会在临时表中保留其左边所有记录行（即使无法在右表中匹配共有字段，这样会将记录行中的右表字段置为空）\
+接下来你就可以通过***where***对临时表中的记录行进行过滤与***select***
+
+>上述语句也可以通过子查询实现
+```sql
+select emp_no
+from employees
+where emp_no not in (select emp_no from dept_manager)
+```

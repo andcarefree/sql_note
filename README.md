@@ -12,6 +12,7 @@ select * from users limit 2,1
 主要想吐槽的是，为啥两种写法关于限制行数与偏移量的先后顺序没有一一对应\
 不使用***offset***语句的话则只限制返回的记录条数
 
+
 ### 2. order by _ (desc)
 ***order by***语句根据其后跟的列名对返回的行记录进行排序\
 顺序就为常规意义的顺序，若需要逆序则在列名后加***desc***
@@ -26,6 +27,10 @@ select * from users order by user_name desc
 ```sql
 select user_age from users group by user_age
 ```
+非聚合字段不能出现在***select***中，因为一个聚合字段形成的组中会有多个非聚合字段，
+此时***select***非聚合字段只会从聚合字段的分组中随机选择一个
+>使用GROUP BY子句时，SELECT子句中只能有聚合键、聚合函数、常数。
+
 
 ### 4. distinct
 ***distinct***语句对其后所跟的列名进行去重\
@@ -35,6 +40,7 @@ select distinct user_age from users
 select user_age from users group by user_age
 ```
 上述两个语句检索的行记录应该是一样的（顺序可能不一样，没有测试过）
+
 
 ### 5. left join
 ***left join***语句是联结表的一种方式
